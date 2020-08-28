@@ -1,6 +1,6 @@
 import Util from './util'
 import OrderService from '../services/OrderService'
-import Products_x_OrderService from '../services/ProductXOrderService'
+import Products_x_OrderService from '../Services/ProductXOrderService'
 const util = new Util()
 
 class OrderController {
@@ -30,7 +30,19 @@ class OrderController {
     util.setSuccess(200, 'Order retrieved', item)
     return util.send(res)
   }
-
+  static async updateItem(req, res) {
+    const newOrder = req.body
+    const { id } = req.params
+    try {
+      await OrderService.update(newOrder, {where: {id: Number(id) }})
+      const updatedOrder = await OrderService.getById(id)
+      util.setSuccess(200, 'Order updated', updatedOrder)
+      return util.send(res)
+    } catch (error) {
+      util.setError(500, error.message)
+        return util.send(res)
+    }
+  }
   static async add(req, res) {
       const newOrder = req.body
       try {
@@ -38,7 +50,7 @@ class OrderController {
         util.setSuccess(201, 'Order Added!', createdOrder)
         return util.send(res)
       } catch (error) {
-        util.setError(400, error.message)
+        util.setError(500, error.message)
         return util.send(res)
       }
     }

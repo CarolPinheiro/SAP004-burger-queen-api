@@ -30,6 +30,13 @@ class OrderService {
     throw error
   }
 }
+  static async update(newOrderInfo, id) {
+  try {
+    return database.Order.update(newOrderInfo, id)
+  } catch (error) {
+    throw error
+  }
+}
 
 }
 export default OrderService

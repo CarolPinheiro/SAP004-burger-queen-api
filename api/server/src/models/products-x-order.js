@@ -1,13 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const ProductsxOrder = sequelize.define('products_x_order', {
-    quantidade: DataTypes.INTEGER
+  const Products_x_Order = sequelize.define('Products_x_Order', {
+    obs: DataTypes.STRING,
+    add_egg: DataTypes.BOOLEAN,
+    add_cheese: DataTypes.BOOLEAN
 
   }, {});
-
-  ProductsxOrder.associate = function(models) {
-    ProductsxOrder.belongsTo(moldels.Products)
-    ProductsxOrder.belongsTo(moldels.Order)
-  }
-  return ProductsxOrder;
+  Products_x_Order.associate = function(models) {
+    Products_x_Order.belongsTo(models.Product)
+    Products_x_Order.belongsTo(models.Order)
+  };
+  return Products_x_Order;
 };

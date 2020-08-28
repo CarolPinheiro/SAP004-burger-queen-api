@@ -2,25 +2,22 @@ module.exports = {
   "development": {
     "username": "postgres",
     "password": "example",
-    "database": "seila",
+    "database": "postgres",
     "host": "db",
-    "dialect": "postgres",
-    "operatorsAliases": false
+    "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "example",
-    "database": "bq_api_test",
+    "database": "postgres",
     "host": "db",
     "dialect": "postgres",
-    "operatorsAliases": false
   },
   "production": {
     "username": "postgres",
     "password": "example",
-    "database": "bq_api",
+    "database": "postgres",
     "host": "db",
     "dialect": "postgres",
-    "operatorsAliases": false
   }
 }

@@ -1,24 +1,23 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Products', {
+    return queryInterface.createTable('Products_x_Orders', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      name: {
-        type: Sequelize.STRING
+      oroductId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model:'Products', key:'id'}
       },
-      has_extra: {
-        type: Sequelize.BOOLEAN
-      },
-      is_burger: {
-        type: Sequelize.BOOLEAN
-      },
-      price: {
-        type: Sequelize.DECIMAL(10,2)
+
+      orderId: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        references: {model:'Orders', key:'id'}
       },
       createdAt: {
         allowNull: false,
@@ -31,6 +30,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Products');
+    return queryInterface.dropTable('Products_x_Orders');
   }
 };
